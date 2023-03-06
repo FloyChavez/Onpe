@@ -17,15 +17,25 @@ public class Db {
 		getConnection();
 	}
 	
-	public Db(String ip, String port, String bd, String user, String password) {
+	public Db(String ip, String user, String password, String bd) {
 		this._IP = ip;
-		this._PORT = port;
-		this._BD = bd;
 		this._USER = user;
 		this._PASSWORD = password;
+		this._BD = bd;
 		getConnection();
 	}
 
+	public Db(String ip, String port,  String user, String password,String bd) {
+		this._IP = ip;
+		this._PORT = port;
+		this._USER = user;
+		this._PASSWORD = password;
+		this._BD = bd;
+		getConnection();
+	}
+	
+	
+	
 	public void getConnection() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

@@ -1,4 +1,10 @@
-<%@ page pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%
+	String id= (String)session.getAttribute("id");
+	String [][] data = (String[][]) session.getAttribute("data");
+%>
+
 <!DOCTYPE html> 
  <head>
      <title>ONPE - Oficina Nacional de Procesos Electorales</title>
@@ -25,7 +31,7 @@
 							<a href="actas.jsp">ACTAS</a>
 						</li>
 						<li class="bt-rojo act-rojo">
-							<a href="participacion.jsp">PARTICIPACIÓN CIUDADANA</a>
+							<a href="svlParticipacion">PARTICIPACIÓN CIUDADANA</a>
 						</li>
 					</ul>
 				</nav>
@@ -36,17 +42,36 @@
 					<div class="col-xs-12 col-md-3">
 						<div class="menu-interna">
 							<ul>
-								<li><a href="participacion.jsp" class="act-izq">TOTAL</a></li>
+								<li><a href="svlParticipacion" class="act-izq">TOTAL</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-xs-12 col-md-9" id="impreso">
 						<div class="contenido-interna">
-							<div class="titulos col-xs-12">
-								<div class="col-xs-11">
-									<h3> <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true" style="font-size:19px"></span> SEGUNDA ELECCIÓN PRESIDENCIAL 2016: PARTICIPACIÓN CIUDADANA</h3>
-								</div>
-							</div>
+						
+						<div class="titulos col-xs-12">
+						<div class="col-xs-11">
+							<h3> <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true" style="font-size:19px"></span> SEGUNDA ELECCIÓN PRESIDENCIAL 2016: PARTICIPACIÓN CIUDADANA</h3>
+						</div>
+
+						<div class="col-xs-1 oculto-boton-print">
+							<button><i class="fa fa-print ico-print"></i></button>
+						</div>
+						
+					</div>
+					
+					<%if (id != null){ %>
+					
+                    <table>
+                        <tr>
+                            <td><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> REGRESAR</button></td>
+                            <td width="60%">&nbsp;</td>
+                            <td><button type="button" class="btn btn-primary" onclick="#">REPORTE DETALLADO EN EXCEL</button></td>
+                        </tr>
+                    </table>
+                    
+                    <%} %>
+                    
 							<div class="col-xs-12">
 								<p class="subtitle">ACTAS CONTABILIZADAS</p>
 								<div class="col-lg-7 centered">
@@ -63,6 +88,7 @@
 								</div>
 								<br>
 							</div>
+							
 							<div class="col-xs-12 line pbot30">
 								<div class="col-xs-12 col-md-6">
 									<img src="images/estadistico.png" class="img-responsive">
@@ -88,15 +114,61 @@
 								</div>
 			
 							</div>
+							<%if (id == null){ %>
 							
 								<div class="col-xs-12 pbot30 ptop20">
 									<div class="col-xs-12 col-md-6">
-										<a href="svlOnpe?id=Extranjero"><img src="images/icono_extranjero.jpg" class="img-responsive"></a>
+										<a href="svlParticipacion?id=extranjero"><img src="images/icono_extranjero.jpg" class="img-responsive"></a>
 									</div>
 									<div class="col-xs-12 col-md-6">
-										<a href="svlOnpe?id=Nacional"><img src="images/icono_nacional.jpg" class="img-responsive"></a>
+										<a href="svlParticipacion?id=nacional"><img src="images/icono_nacional.jpg" class="img-responsive"></a>
 									</div>
 								</div>
+								
+								<%} %>
+								
+								
+								<% if (id != null){%>
+								<div class="col-xs-12">
+									<p class="subtitle">Consulta de participación DETALLADO </p>
+									<div id="page-wrap">
+										<table class="table21">
+											<tbody>
+			                                    
+			                                    <tr class="titulo_tabla">
+			                                        <td><%=session.getAttribute("DPD")%></td>
+			                                        <td>TOTAL ASISTENTES</td>
+			                                        <td>% TOTAL ASISTENTES</td>
+			                                        <td>TOTAL AUSENTES</td>
+			                                        <td>% TOTAL AUSENTES</td>
+			                                        <td>ELECTORES HÁBILES</td>
+			                                    </tr>
+			                                    <% for (String[] aData:data){%>
+				                                    <tr>
+				                                        <td><%= aData[1] %></td>
+				                                        <td><%= aData[2] %></td>
+				                                        <td><%= aData[3] %></td>
+				                                        <td><%= aData[4] %></td>
+				                                        <td><%= aData[5] %></td>
+				                                        <td><%= aData[6] %></td>
+				                                    </tr>
+			                                    <%}%>
+			                                    
+			                                    <tr>
+			                                        <td>TOTALES</td>	
+			                                        <td>17,953,367</td> 
+			                                        <td>81.543%</td>
+			                                        <td>4,063,663</td>
+			                                        <td>18.457%</td>
+			                                        <td>22,017,030</td>
+			                                    </tr>
+			                                    
+											</tbody>
+										</table>
+									</div>
+								</div>		
+							<%}%>		
+								
 						</div>
 					</div>
 				</div>

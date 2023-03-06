@@ -1,4 +1,6 @@
-<%@ page pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String id= (String) session.getAttribute("id");%>
+
 <!DOCTYPE html> 
 <html>
     <head>
@@ -10,7 +12,21 @@
         <link href="css/font-awesome.min.css"       rel="stylesheet" type="text/css" media="screen"/>		
     </head>
     <body>
-       <%@ include file ="WEB-INF/header.jsp" %>
+        <header>
+            <div class="container">
+                <div class="pull-left logo-onpe">
+                    <div class="pull-left"><a href="index.jsp"><img src="images/onpe-trans.png"></a></div>
+                    
+                    <div class="pull-left">
+                        <h1>PRESENTACIÓN DE RESULTADOS</h1>
+                    </div>
+                </div>
+        
+                <div class="pull-right logo">
+                    <img src="images/eegg2016-trans.png" width="218" height="35">
+                </div>
+            </div>
+        </header>
         
         <section class="container space02 nosub">
             <div class="pull-left pd02 ancho-ie">
@@ -26,12 +42,12 @@
                 </a>
             </div>
             <div class="pull-left pd01 ancho-ie">
-                <a href="participacion.jsp">
+                <a href="svlParticipacion">
                     <div class="grow pic btn05"><img src="images/participacion.jpg" ></div>
                 <div class="tit01"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><p>PARTICIPACIÓN <br> CIUDADANA</p></div>
                 </a>
             </div>
         </section>
-       <%@ include file ="WEB-INF/footer.jsp" %>
+        <%@ include file="WEB-INF/footer.jsp" %>
     </body>
 </html>

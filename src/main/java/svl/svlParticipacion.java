@@ -8,28 +8,26 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-public class svlPelicula extends HttpServlet {
+public class svlParticipacion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public svlPelicula() {
+    public svlParticipacion() {
         super();
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+		dao.OnpeDAO daoOnpe =new dao.OnpeDAO();
 		
 		String id = request.getParameter("id"); 
 		Object data=null;
 		
 		if ( id != null ) {
-				if ( id.equals("cartelera") || id.equals("estrenos") )  
-			 data = new dao.OnpeDAO().getPeliculas( id.equals("cartelera") ? 1 : 2 ,true);
-			 else data = new dao.OnpeDAO().getPelicula( id ,false);
-			 
-			session.setAttribute("id", data == null ? null :  id.equals("cartelera") || id.equals("estrenos")?"peliculas":"pelicula");
-			session.setAttribute("data", data);
+			data = daoOnpe.getVotos(id.equals("nacional")? 1 : 26 , id.equals("nacional") ? 25 : 30);
 				}
-		response.sendRedirect("index.jsp");
+		session.setAttribute("id", id);
+		session.setAttribute("data", data);
+		response.sendRedirect("participacion.jsp");
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
