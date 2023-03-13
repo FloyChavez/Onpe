@@ -1,5 +1,4 @@
 package db;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,7 +7,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 public class Db {
-	String _IP ="localhost", _PORT="1433", _USER="sa", _PASSWORD="sa.", _BD="", _SQL="";
+	
+	String _IP = "localhost", _PORT="1433", _USER="sa", _PASSWORD="", _BD="", _SQL="";
 	Connection cn = null;
 	PreparedStatement ps = null;
 	
@@ -39,7 +39,8 @@ public class Db {
 	public void getConnection() {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			cn = DriverManager.getConnection( String.format("jdbc:sqlserver://%s:%s;database=%s;integratedSecurity=true;encrypt=false", _IP, _PORT, _BD ), _USER, _PASSWORD ); // ;trustServerCertificate=false 
+			//cn = DriverManager.getConnection( String.format("jdbc:sqlserver://%s:%s;database=%s;integratedSecurity=true;encrypt=false", _IP, _PORT, _BD ), _USER, _PASSWORD ); // ;trustServerCertificate=false 
+			  cn = DriverManager.getConnection( String.format("jdbc:sqlserver://%s:%s;database=%s;encrypt=false", _IP, _PORT, _BD ), _USER, _PASSWORD ); // ;trustServerCertificate=false
 		} catch (ClassNotFoundException | SQLException e) { e.printStackTrace(); }	
 	}
 	

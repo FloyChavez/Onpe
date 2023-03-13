@@ -2,6 +2,7 @@ package dao;
 
 public class OnpeDAO {
 db.Db db = new db.Db("localhost","sa","sqladmin","Onpe");
+// db.Db db = new db.Db("sql5108.site4now.net","sa","sqladmin","db_a952ba_onpe_admin");
 
 public Object getVotos (int inicio, int fin) {
 	db.Sentencia(String.format("usp_getVotos %s,%s",inicio,fin));

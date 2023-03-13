@@ -25,10 +25,10 @@
 				<nav class="navbar-collapse bs-navbar-collapse collapse" aria-expanded="false">
 					<ul class="nav navbar-nav">
 						<li class="bt-azul">
-							<a href="presidencial.jsp">PRESIDENCIAL</a>
+							<a href="">PRESIDENCIAL</a>
 						</li>
 						<li class="bt-amarillo">
-							<a href="actas.jsp">ACTAS</a>
+							<a href="svlActas">ACTAS</a>
 						</li>
 						<li class="bt-rojo act-rojo">
 							<a href="svlParticipacion">PARTICIPACIÓN CIUDADANA</a>
@@ -48,12 +48,10 @@
 					</div>
 					<div class="col-xs-12 col-md-9" id="impreso">
 						<div class="contenido-interna">
-						
 						<div class="titulos col-xs-12">
 						<div class="col-xs-11">
 							<h3> <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true" style="font-size:19px"></span> SEGUNDA ELECCIÓN PRESIDENCIAL 2016: PARTICIPACIÓN CIUDADANA</h3>
 						</div>
-
 						<div class="col-xs-1 oculto-boton-print">
 							<button><i class="fa fa-print ico-print"></i></button>
 						</div>
@@ -70,7 +68,7 @@
                         </tr>
                     </table>
                     
-                    <%} %>
+                    <% } %>
                     
 							<div class="col-xs-12">
 								<p class="subtitle">ACTAS CONTABILIZADAS</p>
@@ -94,6 +92,13 @@
 									<img src="images/estadistico.png" class="img-responsive">
 								</div>
 								<div class="col-xs-12 col-md-6">
+								
+								<%if ( id != null){ %>
+								<div class="cont-recto" style="margin-bottom:10px">
+								<%= session.getAttribute("ambito") %>
+								</div>
+								<% } %>
+								
 									<p class="subtitle">ELECTORES HÁBILES 22,901,954</p>
 									<div id="page-wrap">
 										<table class="table09_2" cellspacing="0">
@@ -112,29 +117,25 @@
 										</table>
 									</div>
 								</div>
-			
 							</div>
 							<%if (id == null){ %>
 							
 								<div class="col-xs-12 pbot30 ptop20">
 									<div class="col-xs-12 col-md-6">
-										<a href="svlParticipacion?id=extranjero"><img src="images/icono_extranjero.jpg" class="img-responsive"></a>
+										<a href="svlParticipacion?id=Extranjero"><img src="images/icono_extranjero.jpg" class="img-responsive"></a>
 									</div>
 									<div class="col-xs-12 col-md-6">
-										<a href="svlParticipacion?id=nacional"><img src="images/icono_nacional.jpg" class="img-responsive"></a>
+										<a href="svlParticipacion?id=Nacional"><img src="images/icono_nacional.jpg" class="img-responsive"></a>
 									</div>
 								</div>
-								
 								<%} %>
 								
-								
-								<% if (id != null){%>
+								<% if (id != null && data != null){%>
 								<div class="col-xs-12">
 									<p class="subtitle">Consulta de participación DETALLADO </p>
 									<div id="page-wrap">
 										<table class="table21">
 											<tbody>
-			                                    
 			                                    <tr class="titulo_tabla">
 			                                        <td><%=session.getAttribute("DPD")%></td>
 			                                        <td>TOTAL ASISTENTES</td>
@@ -144,13 +145,13 @@
 			                                        <td>ELECTORES HÁBILES</td>
 			                                    </tr>
 			                                    <% for (String[] aData:data){%>
-				                                    <tr>
+				                                    <tr onclick="location.href='svlParticipacion?id=<%= (id + "," + aData[0]) %>'" onmouseover="this.style.cursor = &quot;pointer&quot;; this.style.color = &quot;grey&quot;" onmouseout="this.style.color = &quot;black&quot;" style="cursor: pointer; color: black;">
+				                                        <td><%= aData[0] %></td>
 				                                        <td><%= aData[1] %></td>
 				                                        <td><%= aData[2] %></td>
 				                                        <td><%= aData[3] %></td>
 				                                        <td><%= aData[4] %></td>
 				                                        <td><%= aData[5] %></td>
-				                                        <td><%= aData[6] %></td>
 				                                    </tr>
 			                                    <%}%>
 			                                    
