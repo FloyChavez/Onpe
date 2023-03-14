@@ -18,7 +18,7 @@
                     <div class="pull-left"><a href="index.jsp"><img src="images/onpe-trans.png"></a></div>
                     
                     <div class="pull-left">
-                        <h1>PRESENTACIÓN DE RESULTADOS</h1>
+                        <h1>PRESENTACIÓN DE RESULTAD0S</h1>
                     </div>
                 </div>
         
