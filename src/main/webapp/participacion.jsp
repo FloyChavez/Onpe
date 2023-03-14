@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
-	String id= (String)session.getAttribute("id");
+	String id = 	   (String) session.getAttribute("id");
 	String [][] data = (String[][]) session.getAttribute("data");
 %>
 
@@ -121,16 +121,19 @@
 							<%if (id == null){ %>
 							
 								<div class="col-xs-12 pbot30 ptop20">
+								
 									<div class="col-xs-12 col-md-6">
 										<a href="svlParticipacion?id=Extranjero"><img src="images/icono_extranjero.jpg" class="img-responsive"></a>
 									</div>
+									
 									<div class="col-xs-12 col-md-6">
 										<a href="svlParticipacion?id=Nacional"><img src="images/icono_nacional.jpg" class="img-responsive"></a>
 									</div>
+									
 								</div>
 								<%} %>
 								
-								<% if (id != null && data != null){%>
+								<% if (id != null && data != null ){%>
 								<div class="col-xs-12">
 									<p class="subtitle">Consulta de participación DETALLADO </p>
 									<div id="page-wrap">

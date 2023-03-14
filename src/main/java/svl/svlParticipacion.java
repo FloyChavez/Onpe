@@ -20,8 +20,8 @@ public class svlParticipacion extends HttpServlet {
 		dao.OnpeDAO daoOnpe =new dao.OnpeDAO();
 		
 		String id = request.getParameter("id"); 
-		String sDPD = null, sAmbito = null;
-		Object data=null,totales = null;
+		String sDPD = null	, sAmbito = null;
+		Object data=null	, totales = null;
 		
 		
 		if ( id != null ) {
@@ -29,20 +29,22 @@ public class svlParticipacion extends HttpServlet {
 			int tID = aID.length;
 			boolean bNacional = aID[0].equals("Nacional");
 			
-			/* 
+			/* Otra forma
 			String[][] mDPDP = {{"Departamento","Continente"},{"Provincia","País"},{"Distrito","Ciudad"}};
 			if ( tID < 4 ) sDPD = ( bNacional ? mDPD[tID - 1][0] : mDPD[tID - 1][1] ) .toUpperCase();
 			*/
 			
+			// sDPD
 			if 		(tID == 1) sDPD = bNacional ? "DEPARTAMENTO" : "CONTINENTE";
 			else if (tID == 2) sDPD = bNacional ? "PROVINCIA" : "PAÍS";
 			else if (tID == 3) sDPD = bNacional ? "DISTRITO" : "CIUDAD";
 			
-			
-			if 		(tID == 1) data = daoOnpe.getVotos(bNacional ? 1 : 26,aID[0].equals("Nacional") ? 25 : 30);
+			// data
+			if 		(tID == 1) data = daoOnpe.getVotos(bNacional ? 1 : 26,bNacional ? 25 : 30);
 			else if (tID == 2) data = daoOnpe.getVotosDepartamento(aID[1]);
 			else if (tID == 3) data = daoOnpe.getVotosProvincia(aID[2]);
 			
+			//ambito
 			sAmbito = "Ámbito : " + aID[0];
 			if (tID > 1) sAmbito += "<br/>" + ( bNacional ? "Departamento" : "Continente" ) + " : " + aID[1];
 			if (tID > 2) sAmbito += "<br/>" + ( bNacional ? "Provincia" : "País" ) + " : " + aID[2];
@@ -51,8 +53,8 @@ public class svlParticipacion extends HttpServlet {
 		
 		session.setAttribute("id", id);
 		session.setAttribute("DPD", sDPD);
-		session.setAttribute("ambito", sAmbito);
 		session.setAttribute("data", data);
+		session.setAttribute("ambito", sAmbito);
 		session.setAttribute("totales", totales);
 		
 		response.sendRedirect("participacion.jsp");
