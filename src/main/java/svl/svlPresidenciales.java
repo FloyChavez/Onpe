@@ -1,4 +1,5 @@
 package svl;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,10 +9,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-public class svlActas extends HttpServlet {
+public class svlPresidenciales extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public svlActas() {
+    public svlPresidenciales() {
         super();
     }
 
@@ -32,10 +33,10 @@ public class svlActas extends HttpServlet {
 		String sDPD="";
 		Object data= null, departamentos=null,provincias=null,distritos=null, localvotacion=null;
 		
-		if (idDepartamento == null) 	idDepartamento = "-1";
-		if (idProvincia == null) 		idProvincia = "-1";
-		if (idDistrito == null) 		idDistrito = "-1";
-		if (idLocalVotacion == null) 	idLocalVotacion = "-1";
+		if (idDepartamento == null) idDepartamento = "-1";
+		if (idProvincia == null) 	idProvincia = "-1";
+		if (idDistrito == null) 	idDistrito = "-1";
+		if (idLocalVotacion == null)idLocalVotacion = "-1";
 		
 		
 		if ( id == null && session.getAttribute("departamentos")==null) {
@@ -62,18 +63,18 @@ public class svlActas extends HttpServlet {
 		if (idProvincia != null) 	sDPD += "," + idProvincia;
 		if (idDistrito != null) 	sDPD += "," + idDistrito;
 		
+		
 		session.setAttribute("id", id);
 		session.setAttribute("data", data);
 		session.setAttribute("dpd", sDPD);
-		response.sendRedirect("actas.jsp");
+		
+		response.sendRedirect("presidenciales.jsp");
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
-	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}

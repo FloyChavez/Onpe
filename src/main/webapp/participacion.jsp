@@ -25,7 +25,7 @@
 				<nav class="navbar-collapse bs-navbar-collapse collapse" aria-expanded="false">
 					<ul class="nav navbar-nav">
 						<li class="bt-azul">
-							<a href="">PRESIDENCIAL</a>
+							<a href="presidenciales.jsp">PRESIDENCIAL</a>
 						</li>
 						<li class="bt-amarillo">
 							<a href="svlActas">ACTAS</a>
@@ -118,20 +118,25 @@
 									</div>
 								</div>
 							</div>
-							<%if (id == null){ %>
 							
+							
+							
+							
+							
+							
+							
+							<%if (id == null){ %>
 								<div class="col-xs-12 pbot30 ptop20">
-								
 									<div class="col-xs-12 col-md-6">
 										<a href="svlParticipacion?id=Extranjero"><img src="images/icono_extranjero.jpg" class="img-responsive"></a>
 									</div>
-									
 									<div class="col-xs-12 col-md-6">
 										<a href="svlParticipacion?id=Nacional"><img src="images/icono_nacional.jpg" class="img-responsive"></a>
 									</div>
-									
 								</div>
 								<%} %>
+								
+								
 								
 								<% if (id != null && data != null ){%>
 								<div class="col-xs-12">

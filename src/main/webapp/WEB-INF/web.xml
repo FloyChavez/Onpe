@@ -29,4 +29,14 @@
     <servlet-name>svlActas</servlet-name>
     <url-pattern>/svlActas</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>svlPresidenciales</display-name>
+    <servlet-name>svlPresidenciales</servlet-name>
+    <servlet-class>svl.svlPresidenciales</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>svlPresidenciales</servlet-name>
+    <url-pattern>/svlPresidenciales</url-pattern>
+  </servlet-mapping>
 </web-app>
