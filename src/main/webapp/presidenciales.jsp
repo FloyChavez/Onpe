@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%
+	String id = 	   (String) session.getAttribute("id");		
+	String[] data = (String[]) session.getAttribute("data");
+%>
+
 <!DOCTYPE html> 
     <head>
         <title>ONPE - Oficina Nacional de Procesos Electorales</title>
@@ -58,6 +63,7 @@
                             </ul>
                         </div>
                     </div>
+                    
     <div class="col-xs-12 col-md-9" id="impreso">
         <div class="contenido-interna">
             <div class="titulos col-xs-12">
@@ -69,7 +75,6 @@
                 </div>
             </div>
 
-							
         <div class="col-lg-7 centered">
             <div class="col-xs-12 col-md-12 col-lg-12 cont-curv">
                 <div class="col-xs-3 col-md-1">
@@ -85,6 +90,9 @@
                 </div>
             </div>
         </div>
+        
+        <% if ( id == null &&  data != null){%>
+        	
         <div class="col-xs-12 pbot30">
             <p class="subtitle">RESUMEN GENERAL DE ELECCIONES PRESIDENCIALES</p>
             <br>
@@ -92,7 +100,7 @@
                 <table class="table01">
                     <tbody>
                         <tr class="titulo_tabla">
-                            <td>ORGANIZACI&Oacute;N POL&Iacute;TICA</td>
+                            <td>ORGANIZACIÓN POLÍTICA</td>
                             <td>TOTAL</td>
                             <td>% VOTOS VÁLIDOS</td>
                         </tr>
@@ -100,13 +108,13 @@
                             <td>
                             <img width="40px" height="40px" src="images/simbolo_pkk.jpg" class="spaceimg">
                             <img width="40px" height="40px" src="images/pkk.jpg" class="spaceimg">PERUANOS POR EL KAMBIO </td>
-                            <td>8,596,937</td>
-                            <td> 50.120</td> 
+                            <td><%= data[2] %></td>
+                            <td> <%= data[3] %></td> 
                         </tr>
                         <tr>
                             <td><img width="40px" height="40px" src="images/keyko.jpg" class="spaceimg"><img width="40px" height="40px" src="images/simbolo_keyko.jpg" class="spaceimg">FUERZA POPULAR </td>
-                            <td>8,555,880</td>
-                            <td> 49.880</td> 
+                            <td><%= data[1] %></td>
+                            <td> <%= data[5] %></td> 
                         </tr>
                     </tbody>
                 </table>
@@ -124,21 +132,21 @@
                     </tr>
                     <tr>
                         <td><span class="sangria0">TOTAL DE ACTAS</span></td>
-                        <td>77,307</td>
+                        <td><%= data[6] %></td>
                         <td>100.000%</td>
                     </tr>
                     <tr>
                         <td><span class="sangria1">PROCESADAS</span></td>
-                        <td>77,307</td>
+                        <td><%= data[6] %></td>
                         <td>100.000%</td>
                     </tr>
                     <tr>
                         <td><span class="sangria2">CONTABILIZADAS</span></td>
-                        <td>77,307</td>
+                        <td><%= data[6] %></td>
                         <td>100.000%</td>
                     </tr>
                     <tr>
-                        <td><span class="sangria2">PARA ENV&Iacute;O AL JEE</span></td>
+                        <td><span class="sangria2">PARA ENVíO AL JEE</span></td>
                         <td>0</td>
                         <td>0.000%</td>
                     </tr>
@@ -162,14 +170,17 @@
                         <th>% DE AUSENTISMO</th>
                     </tr>
                     <tr>
-                        <td>22,901,954</td>
-                        <td>18,342,896</td>
-                        <td>80.093%</td>
-                        <td>19.907%</td>
+                        <td><%= data[8]%></td>
+                        <td><%= data[9] %></td>
+                        <td><%= data[10] %></td>
+                        <td><%= data[11] %></td>
                     </tr>
                 </table>
             </div>
          </div>
+        
+        <%} %>
+       
         <div class="row">
             <div class="col-xs-12 legend ">
                 <span>* La participación ciudadana se basa en actas contabilizadas.

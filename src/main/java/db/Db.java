@@ -40,7 +40,7 @@ public class Db {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			//cn = DriverManager.getConnection( String.format("jdbc:sqlserver://%s:%s;database=%s;integratedSecurity=true;encrypt=false", _IP, _PORT, _BD ), _USER, _PASSWORD ); // ;trustServerCertificate=false 
-			  cn = DriverManager.getConnection( String.format("jdbc:sqlserver://%s:%s;database=%s;encrypt=false", _IP, _PORT, _BD ), _USER, _PASSWORD ); // ;trustServerCertificate=false
+			 cn = DriverManager.getConnection( String.format("jdbc:sqlserver://%s:%s;database=%s;encrypt=false", _IP, _PORT, _BD ), _USER, _PASSWORD ); // ;trustServerCertificate=false
 		} catch (ClassNotFoundException | SQLException e) { e.printStackTrace(); }	
 	}
 	

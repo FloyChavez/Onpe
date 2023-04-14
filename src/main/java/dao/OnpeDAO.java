@@ -1,8 +1,9 @@
 package dao;
 
 public class OnpeDAO {
-db.Db db = new db.Db("localhost","sa","sqladmin","Onpe");
-// db.Db db = new db.Db("sql5108.site4now.net","sa","sqladmin","db_a952ba_onpe_admin");
+	//db.Db db = new db.Db("localhost","sa","sqladmin","Onpe");
+ //db.Db db = new db.Db("sql5108.site4now.net","sa","sqladmin","db_a952ba_onpe_admin");
+ db.Db db = new db.Db("sql5108.site4now.net", "db_a952ba_onpe_admin", "onpe1234", "db_a952ba_onpe");
 
 public Object getVotos (int inicio, int fin) {
 	db.Sentencia(String.format("usp_getVotos %s,%s",inicio,fin));
@@ -53,7 +54,10 @@ public Object getDistritos(String idProvincia) {
 		return db.getRegistros();
 }
 	
-	
+	public Object gettotalpresidenciales() {
+		db.Sentencia("sp_getresumen_chavezcruz");
+		return db.getRegistro();
+}
 	
 	
 	
